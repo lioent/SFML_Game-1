@@ -145,10 +145,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseEntity.cpp" />
+    <ClCompile Include="Drawable.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GraphicManager.cpp" />
+    <ClCompile Include="Mobile.cpp" />
+    <ClCompile Include="MyGame.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="PhysicManager.cpp" />
+    <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Solid.cpp" />
+    <ClCompile Include="Static.cpp" />
     <ClCompile Include="_main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseEntity.hpp" />
+    <ClInclude Include="Drawable.hpp" />
+    <ClInclude Include="EntityManager.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="GraphicManager.hpp" />
+    <ClInclude Include="IMobile.hpp" />
+    <ClInclude Include="Mobile.hpp" />
+    <ClInclude Include="MyGame.hpp" />
+    <ClInclude Include="Object.hpp" />
+    <ClInclude Include="PhysicManager.hpp" />
+    <ClInclude Include="Platform.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Solid.hpp" />
+    <ClInclude Include="Static.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

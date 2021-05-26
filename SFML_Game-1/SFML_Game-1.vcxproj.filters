@@ -13,15 +13,114 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Manager">
+      <UniqueIdentifier>{1d947d4e-ff11-433d-a78e-02fef57aba01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entity">
+      <UniqueIdentifier>{9521ad65-98a7-45cd-b7cc-8c687f1793f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entity\Abstraction">
+      <UniqueIdentifier>{a4254b18-5ecb-4024-ba6f-cfbd05c5d443}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entity\Interface">
+      <UniqueIdentifier>{a364fcec-e027-4cfe-8ebc-5389adab1a30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{e4439d23-8613-4fa0-afe7-f838877aa245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Abstraction">
+      <UniqueIdentifier>{4bef3eb6-374b-4e71-85b3-977320f5c00e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Manager">
+      <UniqueIdentifier>{77fc6055-3d95-4f68-88f8-36d9e1ccc95e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawable.cpp">
+      <Filter>Source Files\Entity\Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="Mobile.cpp">
+      <Filter>Source Files\Entity\Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files\Entity\Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="Solid.cpp">
+      <Filter>Source Files\Entity\Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="Static.cpp">
+      <Filter>Source Files\Entity\Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseEntity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicManager.hpp">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityManager.hpp">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseEntity.hpp">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.hpp">
+      <Filter>Header Files\Entity\Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="Mobile.hpp">
+      <Filter>Header Files\Entity\Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="IMobile.hpp">
+      <Filter>Header Files\Entity\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Solid.hpp">
+      <Filter>Header Files\Entity\Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicManager.hpp">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGame.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.hpp">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.hpp">
+      <Filter>Header Files\Entity\Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="Static.hpp">
+      <Filter>Header Files\Entity\Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.hpp">
+      <Filter>Header Files\Entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
