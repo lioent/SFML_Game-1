@@ -39,11 +39,15 @@ void Game::Entity::Player::updateAcceleration()
 	else if (rightMovementKeyIsPressed())
 		this->addForce(sf::Vector2f(1.0f, 0.0f));
 
-	// Y axis
+	//// Y axis
+	//if (upMovementKeyIsPressed())
+	//	this->addForce(sf::Vector2f(0.0f, -1.0f));
+	//else if (downMovementKeyIsPressed())
+	//	this->addForce(sf::Vector2f(0.0f, 1.0f));
+
+	// Jump
 	if (upMovementKeyIsPressed())
-		this->addForce(sf::Vector2f(0.0f, -1.0f));
-	else if (downMovementKeyIsPressed())
-		this->addForce(sf::Vector2f(0.0f, 1.0f));
+		this->addForce(sf::Vector2f(0.0f, -5.0f));
 }
 
 /// <summary>

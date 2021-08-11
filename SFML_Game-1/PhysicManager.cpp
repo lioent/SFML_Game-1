@@ -25,14 +25,14 @@ void Game::Manager::PhysicManager::updateCollision(Mobile& entity, Mobile& colli
 	if (collision.x)
 	{
 		float force = entity.mass() * entity.acceleration().x;
-		entity.addForce(-(force / 2.0f), 0);
-		collider.addForce(force / 2.0f, 0);
+		entity.addForce(-(force / 10.0f), 0);
+		collider.addForce(force / 10.0f, 0);
 	}
 	else if (collision.y)
 	{
 		float force = entity.mass() * entity.acceleration().y;
-		entity.addForce(0, -(force / 2.0f));
-		collider.addForce(0, force / 2.0f);
+		entity.addForce(0, -(force / 10.0f));
+		collider.addForce(0, force / 10.0f);
 	}
 }
 
@@ -42,12 +42,16 @@ void Game::Manager::PhysicManager::updateCollision(Mobile& entity, Solid& collid
 	if (collision.x)
 	{
 		float force = entity.mass() * entity.acceleration().x;
-		entity.addForce(-(force / 2.0f), 0);
+		entity.addForce(-(force / 10.0f), 0);
 	}
 	else if (collision.y)
 	{
+		if (abs(entity.acceleration().y) < 5.0f)
+		{
+			entity.accelerationY(0.0f);
+		}
 		float force = entity.mass() * entity.acceleration().y;
-		entity.addForce(0, -(force / 2.0f));
+		entity.addForce(0, -force);
 	}
 }
 #pragma endregion
@@ -60,7 +64,7 @@ void Game::Manager::PhysicManager::updateCollision(Mobile& entity, Solid& collid
 /// <param name="deltaTime">Time difference since last game loop</param>
 void Game::Manager::PhysicManager::applyGravity(Mobile& entity, float deltaTime)
 {
-	entity.accelerationY(entity.acceleration().y + (9.81f * deltaTime));
+	entity.accelerationY(entity.acceleration().y + (98.1f * deltaTime));
 }
 
 /// <summary>
