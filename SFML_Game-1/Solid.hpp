@@ -20,6 +20,12 @@ namespace Game
 
 				sf::RectangleShape* rigidBody() { return _rigidBody; }
 
+				sf::Vector2f position() const { return this->_rigidBody->getPosition(); }
+				void position(const sf::Vector2f position) { this->_rigidBody->setPosition(position); }
+				
+				sf::Vector2f size() const { return this->_rigidBody->getSize(); }
+				void size(const sf::Vector2f size) { this->_rigidBody->setSize(size); }
+
 			protected:
 				sf::RectangleShape* _rigidBody;
 

@@ -1,5 +1,7 @@
 #include "Player.hpp"
 
+
+
 Game::Entity::Player::Player() : Mobile(), Drawable() { }
 Game::Entity::Player::~Player() { }
 
@@ -18,10 +20,10 @@ void Game::Entity::Player::update()
 /// </summary>
 void Game::Entity::Player::move()
 {
-	this->rigidBody()->move(
-		this->_speed.x += this->_acceleration.x,
-		this->_speed.y += this->_acceleration.y
-	);
+	this->_speed.x += this->_acceleration.x;
+	this->_speed.y += this->_acceleration.y;
+
+	Mobile::move();
 }
 #pragma endregion
 

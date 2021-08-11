@@ -17,16 +17,7 @@ namespace Game
 			Platform();
 			~Platform();
 
-			void position(sf::Vector2f position);
-			void size(sf::Vector2f size);
-
-			// temporary solution for the lack of textures -> should become the intRect in the future
-			sf::RectangleShape* body() const { return _rigidBody; }
-
 		private:
-			// temporary solution for the lack of textures -> should become the intRect in the future
-			sf::RectangleShape* _rigidBody;
-
 		};
 	}
 }

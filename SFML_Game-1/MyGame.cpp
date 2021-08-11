@@ -5,6 +5,8 @@
 
 using namespace Game::Entity;
 
+#include "iostream"
+
 Game::MyGame::MyGame(string name) :
 	Game(name)
 {
@@ -18,16 +20,23 @@ Game::MyGame::~MyGame()
 void Game::MyGame::run()
 {
 	// Open window
-	_graphicManager.openWindow(sf::VideoMode(1366.0f, 786.0f), _name, sf::Style::Default);
+	_graphicManager.openWindow(sf::VideoMode(1366, 786), _name, sf::Style::Default);
 	_graphicManager.window()->setFramerateLimit(60);
 	//_eventHandler.bindWindowReference(_graphicManager.window());
 
 	// Initialize entities
 	Player player = Player();
-	player.rigidBody()->setPosition(200.0f, 100.0f);
+	player.rigidBody()->setOrigin(
+		player.size() / 2.0f
+	);
+	player.position(sf::Vector2f(200.0f, 100.0f));
+
 	Platform platform1 = Platform();
-	platform1.size(sf::Vector2f(1000.0f, 200.0f));
-	platform1.position(sf::Vector2f(100.0f, 500.0f));
+	platform1.size(sf::Vector2f(500.0f, 100.0f));
+	platform1.rigidBody()->setOrigin(
+		platform1.size() / 2.0f
+	);
+	platform1.position(sf::Vector2f(200.0f, 500.0f));
 
 	// Game Loop
 	sf::Clock clock;
@@ -47,11 +56,13 @@ void Game::MyGame::run()
 		// Update entities
 		_entityManager.update(player, deltaTime.asSeconds());
 		_physicManager.update(player, deltaTime.asSeconds());
+		_physicManager.updateCollision(player, platform1, deltaTime.asSeconds());
+		/*std::cout << _physicManager.checkCollision(player, platform1) << std::endl;*/
 
 		// Draw entities
 		_graphicManager.window()->clear();
 		_graphicManager.window()->draw(*player.rigidBody());
-		_graphicManager.window()->draw(*platform1.body());
+		_graphicManager.window()->draw(*platform1.rigidBody());
 		_graphicManager.window()->display();
 	}
 }

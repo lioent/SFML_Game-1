@@ -2,7 +2,7 @@
 #include <iostream>
 
 const float Game::Manager::PhysicManager::GRAVITY = 981.0f;
-const float Game::Manager::PhysicManager::DECELERATION_RATE = 0.93f;
+const float Game::Manager::PhysicManager::DECELERATION_RATE = 0.90f;
 
 Game::Manager::PhysicManager::PhysicManager() { }
 Game::Manager::PhysicManager::~PhysicManager() { }
@@ -15,10 +15,44 @@ Game::Manager::PhysicManager::~PhysicManager() { }
 /// <param name="deltaTime">Time difference since last game loop</param>
 void Game::Manager::PhysicManager::update(Mobile& entity, float deltaTime)
 {
-	applyDeceleration(entity, deltaTime);
+	applyDeceleration(entity);
 	applyGravity(entity, deltaTime);
 }
 
+void Game::Manager::PhysicManager::updateCollision(Mobile& entity, Mobile& collider, float deltaTime)
+{
+	sf::Vector2<bool> collision = checkCollision(entity, collider);
+	if (collision.x)
+	{
+		float force = entity.mass() * entity.acceleration().x;
+		entity.addForce(-(force / 2.0f), 0);
+		collider.addForce(force / 2.0f, 0);
+	}
+	else if (collision.y)
+	{
+		float force = entity.mass() * entity.acceleration().y;
+		entity.addForce(0, -(force / 2.0f));
+		collider.addForce(0, force / 2.0f);
+	}
+}
+
+void Game::Manager::PhysicManager::updateCollision(Mobile& entity, Solid& collider, float deltaTime)
+{
+	sf::Vector2<bool> collision = checkCollision(entity, collider);
+	if (collision.x)
+	{
+		float force = entity.mass() * entity.acceleration().x;
+		entity.addForce(-(force / 2.0f), 0);
+	}
+	else if (collision.y)
+	{
+		float force = entity.mass() * entity.acceleration().y;
+		entity.addForce(0, -(force / 2.0f));
+	}
+}
+#pragma endregion
+
+#pragma region Auxiliary Methods
 /// <summary>
 /// Applies gravity rules to the mobile entity.
 /// </summary>
@@ -26,7 +60,7 @@ void Game::Manager::PhysicManager::update(Mobile& entity, float deltaTime)
 /// <param name="deltaTime">Time difference since last game loop</param>
 void Game::Manager::PhysicManager::applyGravity(Mobile& entity, float deltaTime)
 {
-	entity.speedY(entity.speed().y + (981.0f * deltaTime));
+	entity.accelerationY(entity.acceleration().y + (9.81f * deltaTime));
 }
 
 /// <summary>
@@ -34,7 +68,7 @@ void Game::Manager::PhysicManager::applyGravity(Mobile& entity, float deltaTime)
 /// </summary>
 /// <param name="entity">Mobile entity to be slowed down</param>
 /// <param name="deltaTime">Time difference since last game loop</param>
-void Game::Manager::PhysicManager::applyDeceleration(Mobile& entity, float deltaTime)
+void Game::Manager::PhysicManager::applyDeceleration(Mobile& entity)
 {
 	// Essentially applies deacceleration
 	entity.acceleration(
@@ -48,5 +82,39 @@ void Game::Manager::PhysicManager::applyDeceleration(Mobile& entity, float delta
 	if (entity.speed().y <= 0.1f || entity.speed().y >= -0.1f)
 		entity.speedY(0.0f);
 
+}
+
+/// <summary>
+/// Signals whether the two Solid entities are colliding or not.
+/// </summary>
+/// <param name="entity">Object that may be colliding</param>
+/// <param name="collider">Object that the entity may be colliding with</param>
+/// <returns>True for colliding and False for not colliding</returns>
+sf::Vector2<bool> Game::Manager::PhysicManager::checkCollision(Solid& entity, Solid& collider)
+{
+	sf::Vector2f delta = sf::Vector2f(
+		collider.position().x - entity.position().x,
+		collider.position().y - entity.position().y
+	);
+	sf::Vector2f intersect = sf::Vector2f(
+		abs(delta.x) - ((entity.size().x / 2.0f) + (collider.size().x / 2.0f)),
+		abs(delta.y) - ((entity.size().y / 2.0f) + (collider.size().y / 2.0f))
+	);
+
+	if (intersect.x < 0.0f && intersect.y < 0.0f)
+	{
+		// X axis collision
+		if (intersect.x > intersect.y)
+		{
+			return sf::Vector2<bool>(true, false);
+		}
+		// Y axis collision
+		else
+		{
+			return sf::Vector2<bool>(false, true);
+		}
+	}
+
+	return sf::Vector2<bool>(false, false);
 }
 #pragma endregion

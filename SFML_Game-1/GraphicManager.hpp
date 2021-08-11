@@ -8,7 +8,7 @@ namespace Game
 	namespace Manager
 	{
 		/// <summary>
-		/// Handles the graphics of the game
+		/// Handles the graphics of the game.
 		/// </summary>
 		class GraphicManager
 		{
@@ -17,7 +17,7 @@ namespace Game
 			~GraphicManager();
 
 			void openWindow(
-				sf::VideoMode videoMode = sf::VideoMode(1366.0f, 768.0f), 
+				sf::VideoMode videoMode = sf::VideoMode(1366, 768), 
 				string name = "", sf::Uint32 style = 
 				sf::Style::Default
 			);

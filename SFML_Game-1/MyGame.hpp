@@ -14,6 +14,5 @@ namespace Game
 		void exit() override;
 
 	private:
-
 	};
 }

@@ -19,6 +19,7 @@ namespace Game
 			void update(Mobile& entity, float deltaTime);
 
 		private:
+			int _maxEntities;
 		};
 	}
 }

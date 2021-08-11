@@ -4,7 +4,7 @@
 #include "PhysicManager.hpp"
 #include <string>
 
-using namespace Manager;
+using namespace Game::Manager;
 using std::string;
 
 namespace Game

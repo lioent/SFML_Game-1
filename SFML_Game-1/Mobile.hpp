@@ -20,10 +20,12 @@ namespace Game
 				Mobile();
 				~Mobile();
 
-				virtual void update() {};
-				virtual void move() {}
+				virtual void update() {}
+
+				void move();
 
 				void addForce(sf::Vector2f direction);
+				void addForce(float x, float y) { addForce(sf::Vector2f(x, y)); }
 
 				float mass() const { return this->_mass; }
 				void mass(const float mass) { this->_mass = mass; }
